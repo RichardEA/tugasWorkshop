@@ -53,13 +53,6 @@ function SignIn(){
                 <br/>
                 <button className='button' onClick={handleClick}> Login </button>
             </div>
-            <div>
-                <p>
-                    {userInput}
-                    <br/>
-                    {passInput}
-                </p>
-            </div>
         </div>
     );
 }
