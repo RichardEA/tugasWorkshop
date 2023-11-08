@@ -30,6 +30,8 @@ function SignIn(){
     const handleClick = () => {
         if (userInput == username && passInput == password){
             navigateToHome()
+        }else if (userInput === "" || passInput === ""){
+            alert("Isi field yang kosong !")
         }else if (userInput != username && passInput != password){
             alert("Username dan password anda salah !")
         }else if (userInput != username){
@@ -47,7 +49,7 @@ function SignIn(){
             </div>
             <div>
                 <h2>Password: </h2>
-                <input className='field' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
+                <input type='password' className='field' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
             </div>
             <div>
                 <br/>
