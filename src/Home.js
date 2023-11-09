@@ -1,15 +1,27 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import './Home.css'
 import axios from 'axios';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './Components/Navbar/navbar'
-export const DataContext = createContext({});
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { DataContext } from "./App";
+import { useNavigate } from "react-router";
+import Navbar from './Components/Navbar/navbar';
+
+export const DataContext2 = createContext({});
+
 
 function Home(){
 
+    // const contextData2 = {
+    //     setCartItem
+    // }
+
     const [product, setProduct] = useState([]);
-    const [cartItem, setCartItem] = useState([]);
-    const [tes] = useState("tes");
+    
+    const {cartItem,setCartItem, tes} = useContext(DataContext)
 
     const cardStyle = {
         width: '18rem'
@@ -27,51 +39,52 @@ function Home(){
         })
     },[])
 
+    const navigate = useNavigate();
 
     const showArray = () => {
-        console.log(cartItem);
+        navigate("/cart")
     }
 
+    console.log(cartItem);
     const testId = event => {
         alert(event.currentTarget.id)
     }
 
     const addItem = data => {
         setCartItem(cartItem.concat(data))
+        alert("Item added")
     }
-
-    const contextData = {
-        cartItem,
-        tes
-    }
-
-
 
     return(
-        <DataContext.Provider value={contextData}>
-            <div>
-                <div>
-                    <Navbar/>
-                    <div class='row sm-6'>
-                        {product.map(data =>
-                        <div class="card" style={{ width:"18rem",height:'35rem' }}>
-                            <img src={data.thumbnail} class="card-img-top" style={{ width:'250px',height:'200px' }}></img>
-                            <div class="card-body">
-                                <h5 class="card-title">{data.title}</h5>
-                                <p class="card-text">{data.description}</p>
-                                <p class="card-text">${data.price}</p>
-                                <button class="btn btn-primary" id={data.id} onClick={e => addItem(data)}>
-                                Add to cart
-                                </button>
-                            </div>
-                        </div>
-                        )}
-                    </div>
-                {/* <input placeholder='insert new product' onChange={event => setTextboxValue(event.target.value)}/> */}
-                <br/>
-                </div>
+        // <DataContext.Provider value={contextData2}>
+        <div>
+            <Navbar/>
+           <div>
+                <Row xs={1} md={4} className="g-4">
+                {product.map(data =>
+                    <Col> 
+                        <Card style={{ width: '18rem', height: '35rem' }}>
+                            <Card.Img variant="top" class='mx-auto' src={data.thumbnail} style={{ width:'250px',height:'200px' }} />
+                            <Card.Body>
+                                <Card.Title>{data.title}</Card.Title>
+                                <Card.Text>
+                                    {data.description}
+                                </Card.Text>
+                                <Card.Text>
+                                    ${data.price}
+                                </Card.Text>
+                                <Button variant="primary" id={data.id} onClick={e => addItem(data)}>Add to cart</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                )}
+                </Row>
+                <Button onClick={showArray}>
+                    click me !
+                </Button>
             </div>
-        </DataContext.Provider>
+            </div>
+        // </DataContext.Provider>
        
     )
 }
