@@ -28,31 +28,28 @@ function SignIn(){
     }
 
     const handleClick = () => {
-        if (userInput == username && passInput == password){
+        if (userInput === username && passInput === password){
             navigateToHome()
         }else if (userInput === "" || passInput === ""){
             alert("Isi field yang kosong !")
-        }else if (userInput != username && passInput != password){
+        }else if (userInput !== username && passInput !== password){
             alert("Username dan password anda salah !")
-        }else if (userInput != username){
+        }else if (userInput !== username){
             alert("Username anda salah !")
-        }else if (passInput != password){
+        }else if (passInput !== password){
             alert("Password anda salah !")
         }
     }
     return (
-        <div className="container">
+        <div className="container text-center">
             <h1>Login Page</h1>
             <h2>Username : </h2>
             <input className='inputteks' ref={userRef} onChange={handleUserChange}id='username' name='username'  placeholder='insert username here'/>
-        <div>
-                <h2>Password: </h2>
-                <input type='password' className='inputteks' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
-            </div>
-            <div>
-                <br/>
-                <button className='tombol' onClick={handleClick}> Login </button>
-            </div>
+            <h2>Password: </h2>
+            <input type='password' className='inputteks' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
+            <br/>
+            <br/>
+            <button className='tombol' onClick={handleClick}> Login </button>
         </div>
     );
 }
