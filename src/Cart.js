@@ -5,15 +5,20 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function Cart(){
 
     const navigate = useNavigate();
 
-    const {cartItem, tes} = useContext(DataContext)
+    const {cartItem, setCartItem, tes} = useContext(DataContext)
 
     const navBack = () => {
         navigate('/home');
+    }
+
+    const resetArray = () => {
+        setCartItem([])
     }
 
     console.log("cartItem",cartItem)
@@ -24,7 +29,7 @@ function Cart(){
                 {cartItem.map(data =>
                     <Col> 
                         <Card style={{ width: '18rem', height: '35rem' }}>
-                            <Card.Img variant="top" src={data.thumbnail} style={{ width:'250px',height:'200px' }} />
+                            <Card.Img variant="top" src={data.thumbnail} class="mx-auto" style={{ width:'250px',height:'200px' }} />
                             <Card.Body>
                                 <Card.Title>{data.title}</Card.Title>
                                 <Card.Text>
@@ -38,6 +43,10 @@ function Cart(){
                     </Col>
                 )}
                 </Row>
+                <br/>
+                <Button onClick={resetArray}>
+                    reset
+                </Button>
                 <br/>
                 <Button onClick={navBack}>
                     Back

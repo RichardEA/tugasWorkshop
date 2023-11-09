@@ -38,7 +38,7 @@ function Home(){
             setProduct(res.data.products)
         })
     },[])
-    
+
     const navigate = useNavigate();
 
     const showArray = () => {
@@ -62,7 +62,7 @@ function Home(){
                 {product.map(data =>
                     <Col> 
                         <Card style={{ width: '18rem', height: '35rem' }}>
-                            <Card.Img variant="top" src={data.thumbnail} style={{ width:'250px',height:'200px' }} />
+                            <Card.Img variant="top" class='mx-auto' src={data.thumbnail} style={{ width:'250px',height:'200px' }} />
                             <Card.Body>
                                 <Card.Title>{data.title}</Card.Title>
                                 <Card.Text>
