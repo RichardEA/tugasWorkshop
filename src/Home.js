@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import './Home.css'
 import axios from 'axios';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -6,14 +6,21 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { DataContext } from "./App";
+import { useNavigate } from "react-router";
 
-export const DataContext = createContext({});
+export const DataContext2 = createContext({});
+
 
 function Home(){
 
+    // const contextData2 = {
+    //     setCartItem
+    // }
+
     const [product, setProduct] = useState([]);
-    const [cartItem, setCartItem] = useState([]);
-    const [tes] = useState("tes");
+    
+    const {cartItem,setCartItem, tes} = useContext(DataContext)
 
     const cardStyle = {
         width: '18rem'
@@ -31,29 +38,25 @@ function Home(){
             setProduct(res.data.products)
         })
     },[])
-
+    
+    const navigate = useNavigate();
 
     const showArray = () => {
-        console.log(cartItem);
+        navigate("/cart")
     }
 
+    console.log(cartItem);
     const testId = event => {
         alert(event.currentTarget.id)
     }
 
     const addItem = data => {
         setCartItem(cartItem.concat(data))
+        alert("Item added")
     }
-
-    const contextData = {
-        cartItem,
-        tes
-    }
-
-
 
     return(
-        <DataContext.Provider value={contextData}>
+        // <DataContext.Provider value={contextData2}>
            <div>
                 <Row xs={1} md={4} className="g-4">
                 {product.map(data =>
@@ -78,7 +81,7 @@ function Home(){
                     click me !
                 </Button>
             </div>
-        </DataContext.Provider>
+        // </DataContext.Provider>
        
     )
 }
