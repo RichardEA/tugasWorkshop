@@ -14,8 +14,8 @@ const Test = ()=>{
 
     return(
            <div className='App'>
-                {product.map(data =><h2>{data.title}</h2>)}
-                {product.map(data =><h5>{data.description}</h5>)}
+                {product.map(data =>
+                <h2>{data.title} <br/> {data.description}</h2>)}
            </div>
         //    <div></div>
         )

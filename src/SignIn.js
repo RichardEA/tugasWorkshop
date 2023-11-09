@@ -41,19 +41,17 @@ function SignIn(){
         }
     }
     return (
-        <div className="box">
+        <div className="kotak">
             <h1>Login Page</h1>
-            <div>
-                <h2>Username : </h2>
-                <input className='field' ref={userRef} onChange={handleUserChange}id='username' name='username'  placeholder='insert username here'/>
-            </div>
-            <div>
+            <h2>Username : </h2>
+            <input className='inputteks' ref={userRef} onChange={handleUserChange}id='username' name='username'  placeholder='insert username here'/>
+        <div>
                 <h2>Password: </h2>
-                <input type='password' className='field' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
+                <input type='password' className='inputteks' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
             </div>
             <div>
                 <br/>
-                <button className='button' onClick={handleClick}> Login </button>
+                <button className='tombol' onClick={handleClick}> Login </button>
             </div>
         </div>
     );

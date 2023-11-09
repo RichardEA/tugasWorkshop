@@ -1,7 +1,7 @@
-.box {
+.kotak {
     text-align: center;
     border: solid black;
-    width : 200px;
+    width : 250px;
     margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
@@ -10,12 +10,12 @@
     padding-right: 80px;
 }
 
-.field{
+.inputteks{
     border-radius: 25px;
     height:25px;
 }
 
-.button{
+.tombol{
     width: 125px;
     height: 40px;
     background-color: burlywood;

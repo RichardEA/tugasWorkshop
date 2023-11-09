@@ -1,33 +1,42 @@
 import { useEffect, useState } from "react";
 import './Home.css'
 import axios from 'axios';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function Home(){
 
+    const [product, setProduct] = useState([]);
+
+    const cardStyle = {
+        width: '18rem'
+    }
+
     useEffect(() => {
-    axios.get(`https://dummyjson.com/products?select=title,price,description,images`).then(res => {
-    console.log(res.data.products)})
-    })
+        axios.get('https://dummyjson.com/product')
+        .then(res => {
+            console.log("res",res)
+            setProduct(res.data.products)
+        })
+    },[])
+
 
     return(
         <div>
-            <div class="topnav">
-                <span className="title">Workshop UAJ</span>
-                <a class="active" href="#home">Home</a>
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
-            </div> 
-            <div class="tes">
-                <h1>Our Products</h1>
-            </div>
-            <div class="card">
-                <img src="" alt="image" />
-                <div class="container">
-                    <h3><b>Product Name</b></h3>
-                    <p>description</p>
+            
+
+            <div class='row sm-2'>
+                {product.map(data =>
+                <div class='card'>
+                    <img src={data.thumbnail} class='card-img-top' alt='picture'/>
+                    <div class='card-body'>
+                        <h5 class='card-title'>{data.title}</h5>
+                        <p class='card-text'>{data.description}</p>
+                        <a href='#' class='btn btn-primary'>add to</a>
+                    </div>
                 </div>
+                )}
             </div>
+
         </div>
     )
 }
