@@ -41,7 +41,7 @@ function SignIn(){
         }
     }
     return (
-        <div className="kotak">
+        <div className="container">
             <h1>Login Page</h1>
             <h2>Username : </h2>
             <input className='inputteks' ref={userRef} onChange={handleUserChange}id='username' name='username'  placeholder='insert username here'/>
