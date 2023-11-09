@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Components/Navbar/navbar'
 
 function SignIn(){
 
@@ -41,6 +42,8 @@ function SignIn(){
         }
     }
     return (
+        <div>
+            <Navbar/>
         <div className="container">
             <h1>Login Page</h1>
             <h2>Username : </h2>
@@ -54,7 +57,9 @@ function SignIn(){
                 <button className='tombol' onClick={handleClick}> Login </button>
             </div>
         </div>
+        </div>
     );
+
 }
 
 export default SignIn;

@@ -2,7 +2,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 import './Home.css'
 import axios from 'axios';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import Navbar from './Components/Navbar/navbar'
 export const DataContext = createContext({});
 
 function Home(){
@@ -13,7 +13,6 @@ function Home(){
 
     const cardStyle = {
         width: '18rem'
-        
     }
 
     const imgStyle = {
@@ -51,26 +50,26 @@ function Home(){
     return(
         <DataContext.Provider value={contextData}>
             <div>
-                <div class='row sm-6'>
-                    {product.map(data =>
-                    <div class="card" style={{ width:"18rem",height:'35rem' }}>
-                        <img src={data.thumbnail} class="card-img-top" style={{ width:'250px',height:'200px' }}></img>
-                        <div class="card-body">
-                            <h5 class="card-title">{data.title}</h5>
-                            <p class="card-text">{data.description}</p>
-                            <p class="card-text">${data.price}</p>
-                            <button class="btn btn-primary" id={data.id} onClick={e => addItem(data)}>
-                            Add to cart
-                            </button>
+                <div>
+                    <Navbar/>
+                    <div class='row sm-6'>
+                        {product.map(data =>
+                        <div class="card" style={{ width:"18rem",height:'35rem' }}>
+                            <img src={data.thumbnail} class="card-img-top" style={{ width:'250px',height:'200px' }}></img>
+                            <div class="card-body">
+                                <h5 class="card-title">{data.title}</h5>
+                                <p class="card-text">{data.description}</p>
+                                <p class="card-text">${data.price}</p>
+                                <button class="btn btn-primary" id={data.id} onClick={e => addItem(data)}>
+                                Add to cart
+                                </button>
+                            </div>
                         </div>
+                        )}
                     </div>
-                    )}
-                </div>
                 {/* <input placeholder='insert new product' onChange={event => setTextboxValue(event.target.value)}/> */}
                 <br/>
-                <button onClick={showArray}>
-                    show cart
-                </button>
+                </div>
             </div>
         </DataContext.Provider>
        
