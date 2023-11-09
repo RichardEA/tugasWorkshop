@@ -59,7 +59,7 @@ function Home(){
         // <DataContext.Provider value={contextData2}>
         <div>
             <Navbar/>
-           <div>
+           <div style={{marginTop: '50px'}}>
                 <Row xs={1} md={4} className="g-4">
                 {product.map(data =>
                     <Col> 
@@ -79,9 +79,6 @@ function Home(){
                     </Col>
                 )}
                 </Row>
-                <Button onClick={showArray}>
-                    click me !
-                </Button>
             </div>
             </div>
         // </DataContext.Provider>
