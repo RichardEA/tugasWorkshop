@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { DataContext } from "./App";
 import { useNavigate } from "react-router";
+import Navbar from './Components/Navbar/navbar';
 import Test from "./Test";
 
 export const DataContext2 = createContext({});
@@ -62,7 +63,9 @@ function Home(){
 
     return(
         // <DataContext.Provider value={contextData2}>
-           <div>
+        <div>
+            <Navbar/>
+           <div style={{marginTop: '50px'}}>
                 <Test/>
                 <br/>
 
@@ -85,6 +88,7 @@ function Home(){
                     </Col>
                 )}
                 </Row>
+            </div>
             </div>
         // </DataContext.Provider>
        
