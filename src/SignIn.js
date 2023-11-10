@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button'
 
 function SignIn(){
 
@@ -41,16 +44,30 @@ function SignIn(){
         }
     }
     return (
-        <div className="container text-center">
-            <h1>Login Page</h1>
-            <h2>Username : </h2>
-            <input className='inputteks' ref={userRef} onChange={handleUserChange}id='username' name='username'  placeholder='insert username here'/>
-            <h2>Password: </h2>
-            <input type='password' className='inputteks' ref={passRef} onChange={handlePassChange} id='password' name='password' placeholder='insert password here'/>
-            <br/>
-            <br/>
-            <button className='tombol' onClick={handleClick}> Login </button>
+        <div>
+            <div style={{ marginLeft: 'auto', marginRight: 'auto',marginTop: '75px', width: '50em' }}>
+                <Card style={{ textAlign: 'center', padding: '20px', backgroundColor:'lavender' }}>
+                    WELCOME
+                </Card>
+                <Card style={{ padding: '20px', marginTop:'20px', backgroundColor:'lavender' }}>
+                    <Form>
+                        <Form.Group className="mb-3" controlId="formGroupEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" ref={userRef} onChange={handleUserChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formGroupPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" ref={passRef} onChange={handlePassChange} />
+                        </Form.Group>
+                        <Button style={{ width: '120px', height: '50px' }} onClick={handleClick}>
+                            Login
+                        </Button>
+                    </Form> 
+                </Card>
+            </div>
         </div>
+
+        
     );
 }
 

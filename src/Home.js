@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { DataContext } from "./App";
 import { useNavigate } from "react-router";
+import Test from "./Test";
 
 export const DataContext2 = createContext({});
 
@@ -41,7 +42,11 @@ function Home(){
 
     const navigate = useNavigate();
 
-    const showArray = () => {
+    const navigateToHome = () => {
+        navigate('/home');
+    }
+
+    const navigateToCart = () => {
         navigate("/cart")
     }
 
@@ -58,6 +63,9 @@ function Home(){
     return(
         // <DataContext.Provider value={contextData2}>
            <div>
+                <Test/>
+                <br/>
+
                 <Row xs={1} md={4} className="g-4">
                 {product.map(data =>
                     <Col> 
@@ -77,9 +85,6 @@ function Home(){
                     </Col>
                 )}
                 </Row>
-                <Button onClick={showArray}>
-                    click me !
-                </Button>
             </div>
         // </DataContext.Provider>
        

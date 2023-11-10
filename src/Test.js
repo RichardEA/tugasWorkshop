@@ -1,34 +1,46 @@
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import { createContext, useEffect, useState } from "react";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function Test(){
+import { useNavigate } from "react-router";
 
+function BasicExample() {
 
-    return (
-        <div style={{ marginLeft: 'auto', marginRight: 'auto',marginTop: '75px', width: '50em' }}>
-            <Card style={{ textAlign: 'center', padding: '20px' }}>
-                WELCOME
-            </Card>
-            <Card style={{ padding: '20px', marginTop:'20px' }}>
-                <Form>
-                    <Form.Group className="mb-3" controlId="formGroupEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formGroupPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
-                    </Form.Group>
-                </Form> 
-            </Card>
-            
-        </div>
-    )
+  const navigate = useNavigate();
+
+    const navigateToLogin = () => {
+        navigate('/SignIn');
+    }
+
+    const navigateToHome = () => {
+      navigate('/Home');
+  }
+
+    const navigateToCart = () => {
+    navigate('/Cart');
+  }
+
+  return (
+
+    
+    <div>
+      <Navbar expand="lg" variant='light' bg='primary' style={{ height: '50px' }}>
+        <Container>
+          <Navbar.Brand href="#home">Workshop Marketplace</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
+              <Nav.Link onClick={navigateToCart}>Cart</Nav.Link>
+              <Nav.Link onClick={navigateToLogin}>Logout</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+    </Navbar>
+    </div>
+    
+  );
 }
 
-export default Test
+export default BasicExample;
